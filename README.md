@@ -7,3 +7,5 @@ Proposed functionality:<br>
 - Flip coin<br>
 - Score history<br>
 - Undo last action<br>
+
+Pure JS used.
