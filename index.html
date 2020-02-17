@@ -3,19 +3,38 @@
 <head>
   <title>Yu-Gi-Oh Life Point Counter</title>
   <script src="https://unpkg.com/vue"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
   <div id="app">
-    {{ message }}
+    <div class="row">
+        <div class="container">
+          <div class="col s12">
+              <ul class="collection">
+                  <li class="collection-item">{{playerOneScore}}</li>
+                  <li class="collection-item">{{playerTwoScore}}</li>
+              </ul>
+          </div>
+        </div>
+    </div>
   </div>
+  
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        playerOneScore: 8000,
+        playerTwoScore: 8000
       }
     })
   </script>
+  
 </body>
 </html>
