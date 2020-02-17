@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Yu-Gi-Oh Life Point Counter</title>
-  <script src="https://unpkg.com/vue"></script>
+  <head>
+    <title>Yu-Gi-Oh Life Point Counter</title>
+    <script src="https://unpkg.com/vue"></script>
 
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
-<body>
-  <div id="app">
-    <div class="row">
-        <div class="container">
-          <div class="col s12">
-              <ul class="collection">
-                  <li class="collection-item">{{playerOneScore}}</li>
-                  <li class="collection-item">{{playerTwoScore}}</li>
-              </ul>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="row">
+          <div class="container">
+            <div class="col s12">
+                <ul class="collection">
+                    <li class="collection-item">{{playerOneScore}}</li>
+                    <li class="collection-item">{{playerTwoScore}}</li>
+                </ul>
+            </div>
           </div>
-        </div>
+      </div>
+      <!-- Num pad for score input -->
+      <div class="row">
+        <div class="col s3">7</div>
+        <div class="col s3">8</div>
+        <div class="col s3">9</div>
+        <div class="col s3"></div>
+      </div>
+        <!-- Second line -->
+      <div class="row">
+        <div class="col s3">6</div>
+        <div class="col s3">5</div>
+        <div class="col s3">4</div>
+        <div class="col s3"></div>
+      </div>
+      <div class="row">
+        <!-- First line -->
+        <div class="col s3">3</div>
+        <div class="col s3">2</div>
+        <div class="col s3">1</div>
+        <div class="col s3"></div>
+      </div>
+      
+      <!-- <button v-on:click="playerOneScore -= 1000">- 1000</button>
+      <button v-on:click="playerOneScore -= 1000">+ 1000</button>
+      <button v-on:click="increaseP1Score(1500)">+1000</button> -->
+      <a class="waves-effect waves-light btn-large" v-on:click="increaseP1Score(1000)">+1000</a>
     </div>
-  </div>
-  
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!',
-        playerOneScore: 8000,
-        playerTwoScore: 8000
-      }
-    })
-  </script>
-  
-</body>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue!',
+          playerOneScore: 8000,
+          playerTwoScore: 8000
+        },
+        methods: {
+          increaseP1Score: function(amount) {
+            this.playerOneScore = this.playerOneScore + amount;
+          },
+          decreaseP1Score: function(amount) {
+            this.playerOneScore = this.playerOneScore + amount;
+          }
+        }
+      })
+
+      let decreaseP1LifePoints = (amount) => {
+        app.data.playerOneScore -= amount;
+      };
+
+      // Add button event listeners
+      // Add text input fields
+        // With validation for numbers only
+    </script>
+    
+  </body>
 </html>
