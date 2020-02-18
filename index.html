@@ -6,6 +6,7 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <div id="app">
@@ -20,31 +21,52 @@
           </div>
       </div>
       <!-- Num pad for score input -->
-      <div class="row">
-        <div class="col s3">7</div>
-        <div class="col s3">8</div>
-        <div class="col s3">9</div>
-        <div class="col s3"></div>
+      <div class="container">
+        <div class="row">
+          <div class="input-field col s6">
+            <input v-bind:[placeholder]="mainValue" id="inputValue" type="text" class="validate">
+            <label for="inputValue">{{ mainValue }}</label>
+          </div>
+        </div>
       </div>
-        <!-- Second line -->
-      <div class="row">
-        <div class="col s3">6</div>
-        <div class="col s3">5</div>
-        <div class="col s3">4</div>
-        <div class="col s3"></div>
-      </div>
-      <div class="row">
-        <!-- First line -->
-        <div class="col s3">3</div>
-        <div class="col s3">2</div>
-        <div class="col s3">1</div>
-        <div class="col s3"></div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(7)">7</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(8)">8</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(9)">9</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn">+</a></div>
+        </div>
+          <!-- Second line -->
+        <div class="row">
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(6)">6</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(5)">5</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(4)">4</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn">-</a></div>
+        </div>
+        <div class="row">
+          <!-- First line -->
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(3)">3</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(2)">2</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(1)">1</a></div>
+          <div class="col s3"></div>
+        </div>
+        <div class="row">
+          <!-- First line -->
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="clearValue()">Clear</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn" v-on:click="addValue(0)">0</a></div>
+          <div class="col s3"><a class="waves-effect waves-light btn-large full-width-btn"></a></div>
+          <div class="col s3"></div>
+        </div>
+        <a class="waves-effect waves-light btn-large" v-on:click="addValue(1000)">+1000</a>
+        <a class="waves-effect waves-light btn-large" v-on:click="addValue(1000)">+1000</a>
+
       </div>
       
       <!-- <button v-on:click="playerOneScore -= 1000">- 1000</button>
       <button v-on:click="playerOneScore -= 1000">+ 1000</button>
       <button v-on:click="increaseP1Score(1500)">+1000</button> -->
-      <a class="waves-effect waves-light btn-large" v-on:click="increaseP1Score(1000)">+1000</a>
+      
     </div>
 
     <!-- Compiled and minified JavaScript -->
@@ -56,7 +78,8 @@
         data: {
           message: 'Hello Vue!',
           playerOneScore: 8000,
-          playerTwoScore: 8000
+          playerTwoScore: 8000,
+          mainValue: 0
         },
         methods: {
           increaseP1Score: function(amount) {
@@ -64,6 +87,13 @@
           },
           decreaseP1Score: function(amount) {
             this.playerOneScore = this.playerOneScore + amount;
+          },
+          // Append integer
+          addValue: function(value) {
+            this.mainValue = this.mainValue.toString() + value.toString();
+          },
+          clearValue: function() {
+            this.mainValue = 0;
           }
         }
       })
